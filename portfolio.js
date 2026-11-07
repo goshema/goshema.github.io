@@ -6,6 +6,7 @@ const copy = {
     workLabel: "01 / PROJECTS", workTitle: "Models and research", workIntro: "Explore the methods, findings and assumptions behind each project in its GitHub README.",
     resumeLabel: "02 / RÉSUMÉ", resumeTitle: "Education and skills", contactLabel: "03 / CONTACT", contactTitle: "Let’s connect.", contactIntro: "I’m seeking an entry-level actuarial analyst role.", email: "Email ↗",
     readme: "Read the README", repo: "Repository", regression: "Regression README", clustering: "Clustering README", navigation: "Main navigation", language: "Language",
+    credentialsTitle: "Certifications and training", credentialNote: "My credentials may show Omar Saadallah or my full name. I use Omar Alsaadi professionally.", viewCertificate: "View certificate",
     title: "Omar Alsaadi | Actuarial Science Portfolio"
   },
   ar: {
@@ -15,6 +16,7 @@ const copy = {
     workLabel: "٠١ / المشاريع", workTitle: "نماذج وأبحاث", workIntro: "تعرّف على المنهجية والنتائج والافتراضات لكل مشروع من خلال ملف README في GitHub.",
     resumeLabel: "٠٢ / السيرة الذاتية", resumeTitle: "التعليم والمهارات", contactLabel: "٠٣ / التواصل", contactTitle: "لنتواصل", contactIntro: "أبحث عن فرصة مهنية في بداية مسيرتي كمحلل اكتواري.", email: "البريد الإلكتروني ↗",
     readme: "اقرأ ملف README", repo: "المستودع", regression: "توثيق الانحدار", clustering: "توثيق التجميع", navigation: "التنقل الرئيسي", language: "اللغة",
+    credentialsTitle: "الشهادات والدورات التدريبية", credentialNote: "قد يظهر في شهاداتي اسم عمر سعدالله أو اسمي الكامل. أستخدم اسم عمر السعدي مهنياً.", viewCertificate: "عرض الشهادة",
     title: "عمر السعدي | محفظة أعمال في العلوم الاكتوارية"
   }
 };
@@ -71,7 +73,7 @@ const resume = {
     ["SOA exam preparation", "Exam P · Planned sitting February 2027", "Exam FM · Planned sitting April 2027"],
     ["Software and reporting", "Python (pandas, scikit-learn, statsmodels, SciPy, seaborn), R (tidyverse, ggplot2, cluster), SQL (DDL, DML and DQL)", "Tableau and advanced Excel (PivotTables, INDEX/MATCH, VLOOKUP and financial modeling)"],
     ["Quantitative methods", "Regression, GLMs, time series, clustering, mortality tables, life contingencies and pension mathematics", "Discounted cash flow, horizontal and common-size analysis, ratio analysis and peer benchmarking"],
-    ["Certifications and learning", "Data Analytics Essentials · Cisco Networking Academy · September 2026", "Python · Kaggle · October 2026", "Pandas · Kaggle · In progress", "Forward Program · McKinsey & Company · In progress"],
+    ["Learning in progress", "Pandas · Kaggle", "Forward Program · McKinsey & Company"],
     ["Professional skills and languages", "Analytical problem-solving, attention to detail, clear written communication and documentation of assumptions", "Arabic · Native", "English · Upper-intermediate", "Turkish · Intermediate"]
   ],
   ar: [
@@ -79,10 +81,28 @@ const resume = {
     ["الاستعداد لاختبارات جمعية الاكتواريين", "اختبار الاحتمالات P · الموعد المخطط فبراير 2027", "اختبار الرياضيات المالية FM · الموعد المخطط أبريل 2027"],
     ["الأدوات وإعداد التقارير", "Python ‏(pandas وscikit-learn وstatsmodels وSciPy وseaborn)، وR ‏(tidyverse وggplot2 وcluster)، وSQL ‏(DDL وDML وDQL)", "Tableau وExcel المتقدم (الجداول المحورية ودوال البحث والنمذجة المالية)"],
     ["الأساليب الكمية", "الانحدار والنماذج الخطية المعممة والسلاسل الزمنية والتجميع وجداول الوفيات واحتمالات الحياة ورياضيات التقاعد", "التدفقات النقدية المخصومة والتحليل الأفقي وتحليل النسب المئوية للقوائم والنسب المالية ومقارنة النظراء"],
-    ["الشهادات والتعلّم", "أساسيات تحليل البيانات · أكاديمية سيسكو للشبكات · سبتمبر 2026", "Python · Kaggle · أكتوبر 2026", "Pandas · Kaggle · قيد الدراسة", "برنامج Forward · ماكنزي وشركاه · قيد الدراسة"],
+    ["برامج قيد الدراسة", "Pandas · Kaggle", "برنامج Forward · ماكنزي وشركاه"],
     ["المهارات المهنية واللغات", "حل المشكلات تحليلياً والدقة في التفاصيل والتواصل الكتابي الواضح وتوثيق الافتراضات", "العربية · اللغة الأم", "الإنجليزية · فوق المتوسط", "التركية · متوسط"]
   ]
 };
+
+const credentials = [
+  { file: "kaggle-python.png", format: "PNG",
+    en: ["Python", "Kaggle Learn · 25 October 2026"],
+    ar: ["Python", "Kaggle Learn · 25 أكتوبر 2026"] },
+  { file: "cisco-data-analytics.pdf", format: "PDF",
+    en: ["Data Analytics Essentials", "Cisco Networking Academy · 16 September 2026"],
+    ar: ["أساسيات تحليل البيانات", "أكاديمية سيسكو للشبكات · 16 سبتمبر 2026"] },
+  { file: "edraak-digital-marketing.pdf", format: "PDF",
+    en: ["Digital Marketing — Paid Campaign Management", "Edraak · 17 March 2021"],
+    ar: ["التسويق الإلكتروني — إدارة الحملات الرقمية المدفوعة", "إدراك · 17 مارس 2021"] },
+  { en: ["Consumer Behavior", "Karabük University · Certificate of achievement · 28 hours"],
+    ar: ["سلوك المستهلك", "جامعة كارابوك · شهادة اجتياز · 28 ساعة"] },
+  { en: ["Turkish Language Programme", "Karabük University TÖMER · CEFR C1 certificate"],
+    ar: ["برنامج اللغة التركية", "مركز TÖMER بجامعة كارابوك · شهادة المستوى C1 وفق الإطار الأوروبي المرجعي"] },
+  { en: ["IELTS Academic", "Overall band 6.0 · Test taken April 2021"],
+    ar: ["IELTS الأكاديمي", "الدرجة الكلية 6.0 · أُجري الاختبار في أبريل 2021"] }
+];
 
 function element(tag, text, className) {
   const node = document.createElement(tag);
@@ -135,6 +155,17 @@ function render(language) {
     list.append(...items.map(item => element("li", item)));
     section.append(element("h3", title), list);
     return section;
+  }));
+  document.querySelector("#credentials").replaceChildren(...credentials.map(credential => {
+    const [title, description] = credential[language];
+    const card = element("article", null, "resume-item credential");
+    card.append(element("h3", title), element("p", description));
+    if (credential.file) {
+      const certificate = link("certificates/" + credential.file, labels.viewCertificate + " (" + credential.format + ")");
+      certificate.setAttribute("aria-label", labels.viewCertificate + " · " + title + " (" + credential.format + ")");
+      card.append(certificate);
+    }
+    return card;
   }));
 }
 

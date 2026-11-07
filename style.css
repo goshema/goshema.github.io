@@ -75,3 +75,7 @@ p { line-height: 1.65; }
   .hero h1 { font-size: 3.45rem; }
 }
 .project, .resume-item { overflow-wrap: anywhere; }
+.credentials { margin-top: 3rem; }
+.credential-note { color: var(--muted); margin-bottom: 1.5rem; }
+.credential p { margin: .4rem 0; }
+.credential a { display: inline-block; margin-top: .25rem; font-weight: 650; }
