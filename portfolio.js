@@ -8,6 +8,7 @@ const copy = {
     readme: "Read the README", repo: "Repository", regression: "Regression README", clustering: "Clustering README", navigation: "Main navigation", language: "Language",
     credentialsTitle: "Certifications and training", credentialNote: "My credentials may show Omar Saadallah or my full name. I use Omar Alsaadi professionally.", viewCertificate: "View certificate",
     educationFiles: "Academic documents",
+    viewRedacted: "View redacted copy (PDF)",
     diploma: "View diploma (redacted PDF)",
     honors: "View first-in-programme certificate (PDF)",
     authentication: "View Saudi degree authentication — MOSADAQA (redacted PDF)",
@@ -22,6 +23,7 @@ const copy = {
     readme: "اقرأ ملف README", repo: "المستودع", regression: "توثيق الانحدار", clustering: "توثيق التجميع", navigation: "التنقل الرئيسي", language: "اللغة",
     credentialsTitle: "الشهادات والدورات التدريبية", credentialNote: "قد يظهر في شهاداتي اسم عمر سعدالله أو اسمي الكامل. أستخدم اسم عمر السعدي مهنياً.", viewCertificate: "عرض الشهادة",
     educationFiles: "الوثائق الأكاديمية",
+    viewRedacted: "عرض نسخة مع حجب البيانات الخاصة (PDF)",
     diploma: "عرض وثيقة التخرج (PDF مع حجب البيانات الخاصة)",
     honors: "عرض شهادة المركز الأول في التخصص (PDF)",
     authentication: "عرض إشعار توثيق الدرجة في السعودية — مصادقة (PDF مع حجب البيانات الخاصة)",
@@ -106,9 +108,11 @@ const credentials = [
     ar: ["التسويق الإلكتروني — إدارة الحملات الرقمية المدفوعة", "إدراك · 17 مارس 2021"] },
   { en: ["Consumer Behavior", "Karabük University · Certificate of achievement · 28 hours"],
     ar: ["سلوك المستهلك", "جامعة كارابوك · شهادة اجتياز · 28 ساعة"] },
-  { en: ["Turkish Language Programme", "Karabük University TÖMER · CEFR C1 certificate"],
+  { file: "tomer-turkish-c1.pdf", format: "PDF", redacted: true,
+    en: ["Turkish Language Programme", "Karabük University TÖMER · CEFR C1 certificate"],
     ar: ["برنامج اللغة التركية", "مركز TÖMER بجامعة كارابوك · شهادة المستوى C1 وفق الإطار الأوروبي المرجعي"] },
-  { en: ["IELTS Academic", "Overall band 6.0 · Test taken April 2021"],
+  { file: "ielts-academic-2021.pdf", format: "PDF", redacted: true,
+    en: ["IELTS Academic", "Overall band 6.0 · Test taken April 2021"],
     ar: ["IELTS الأكاديمي", "الدرجة الكلية 6.0 · أُجري الاختبار في أبريل 2021"] }
 ];
 
@@ -185,8 +189,9 @@ function render(language) {
     const card = element("article", null, "resume-item credential");
     card.append(element("h3", title), element("p", description));
     if (credential.file) {
-      const certificate = link("certificates/" + credential.file, labels.viewCertificate + " (" + credential.format + ")");
-      certificate.setAttribute("aria-label", labels.viewCertificate + " · " + title + " (" + credential.format + ")");
+      const caption = credential.redacted ? labels.viewRedacted : labels.viewCertificate + " (" + credential.format + ")";
+      const certificate = link("certificates/" + credential.file, caption);
+      certificate.setAttribute("aria-label", caption + " · " + title);
       card.append(certificate);
     }
     return card;
