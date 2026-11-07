@@ -62,13 +62,6 @@ const projects = [
       "An essay examining Bitcoin and stablecoins. It asks how much decentralization users actually gain when the financial and technical infrastructure they rely on remains concentrated, and argues that parts of digital finance still depend on U.S. institutions and infrastructure."],
     ar: ["مقال · التمويل الرقمي", "خرافة اللامركزية كما نعرفها",
       "مقال يتناول بيتكوين والعملات المستقرة. يناقش مدى اللامركزية التي يستفيد منها المستخدم حين تظل البنية التحتية المالية والتقنية مركّزة، ويطرح أن أجزاء من التمويل الرقمي لا تزال تعتمد على مؤسسات وبنية تحتية أمريكية."]
-  },
-  {
-    slug: "mlforecast",
-    en: ["Python · Time series · Fork", "mlforecast",
-      "A fork of Nixtla’s open-source library for forecasting time series with machine learning. The library builds features from prior observations and supports forecasting across multiple series. The upstream README includes installation, a quick start and example notebooks."],
-    ar: ["Python · سلاسل زمنية · نسخة متفرعة", "mlforecast",
-      "نسخة متفرعة من مكتبة Nixtla مفتوحة المصدر لتوقع السلاسل الزمنية بالتعلم الآلي. تستخرج المكتبة خصائص من المشاهدات السابقة وتدعم التوقع عبر عدة سلاسل. يتضمن توثيق المشروع الأصلي خطوات التثبيت وأمثلة تطبيقية."]
   }
 ];
 
