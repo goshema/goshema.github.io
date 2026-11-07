@@ -7,6 +7,10 @@ const copy = {
     resumeLabel: "02 / RÉSUMÉ", resumeTitle: "Education and skills", contactLabel: "03 / CONTACT", contactTitle: "Let’s connect.", contactIntro: "I’m seeking an entry-level actuarial analyst role.", email: "Email ↗",
     readme: "Read the README", repo: "Repository", regression: "Regression README", clustering: "Clustering README", navigation: "Main navigation", language: "Language",
     credentialsTitle: "Certifications and training", credentialNote: "My credentials may show Omar Saadallah or my full name. I use Omar Alsaadi professionally.", viewCertificate: "View certificate",
+    educationFiles: "Academic documents",
+    diploma: "View diploma (redacted PDF)",
+    honors: "View first-in-programme certificate (PDF)",
+    authentication: "View Saudi degree authentication — MOSADAQA (redacted PDF)",
     title: "Omar Alsaadi | Actuarial Science Portfolio"
   },
   ar: {
@@ -17,6 +21,10 @@ const copy = {
     resumeLabel: "٠٢ / السيرة الذاتية", resumeTitle: "التعليم والمهارات", contactLabel: "٠٣ / التواصل", contactTitle: "لنتواصل", contactIntro: "أبحث عن فرصة مهنية في بداية مسيرتي كمحلل اكتواري.", email: "البريد الإلكتروني ↗",
     readme: "اقرأ ملف README", repo: "المستودع", regression: "توثيق الانحدار", clustering: "توثيق التجميع", navigation: "التنقل الرئيسي", language: "اللغة",
     credentialsTitle: "الشهادات والدورات التدريبية", credentialNote: "قد يظهر في شهاداتي اسم عمر سعدالله أو اسمي الكامل. أستخدم اسم عمر السعدي مهنياً.", viewCertificate: "عرض الشهادة",
+    educationFiles: "الوثائق الأكاديمية",
+    diploma: "عرض وثيقة التخرج (PDF مع حجب البيانات الخاصة)",
+    honors: "عرض شهادة المركز الأول في التخصص (PDF)",
+    authentication: "عرض إشعار توثيق الدرجة في السعودية — مصادقة (PDF مع حجب البيانات الخاصة)",
     title: "عمر السعدي | محفظة أعمال في العلوم الاكتوارية"
   }
 };
@@ -104,6 +112,12 @@ const credentials = [
     ar: ["IELTS الأكاديمي", "الدرجة الكلية 6.0 · أُجري الاختبار في أبريل 2021"] }
 ];
 
+const educationDocuments = {
+  diploma: "actuarial-sciences-diploma.pdf",
+  honors: "first-in-programme-certificate.pdf",
+  authentication: "mosadaqa-degree-authentication.pdf"
+};
+
 function element(tag, text, className) {
   const node = document.createElement(tag);
   if (text) node.textContent = text;
@@ -149,11 +163,21 @@ function render(language) {
     return article;
   }));
 
-  document.querySelector("#resume-details").replaceChildren(...resume[language].map(([title, ...items]) => {
+  document.querySelector("#resume-details").replaceChildren(...resume[language].map(([title, ...items], index) => {
     const section = element("section", null, "resume-item");
     const list = element("ul");
     list.append(...items.map(item => element("li", item)));
     section.append(element("h3", title), list);
+    if (index === 0) {
+      const documents = element("ul", null, "education-documents");
+      documents.setAttribute("aria-label", labels.educationFiles);
+      for (const [key, file] of Object.entries(educationDocuments)) {
+        const item = element("li");
+        item.append(link("certificates/" + file, labels[key]));
+        documents.append(item);
+      }
+      section.append(documents);
+    }
     return section;
   }));
   document.querySelector("#credentials").replaceChildren(...credentials.map(credential => {
