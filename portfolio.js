@@ -97,6 +97,11 @@ const resume = {
 };
 
 const credentials = [
+  { file: "financial-risk-analytics.pdf", format: "PDF",
+    en: ["Financial Risk Analytics", "Great Learning · 14 November 2026",
+      "Completed coursework on credit risk drivers — probability of default (PD), exposure at default (EAD) and loss given default (LGD) — and the calculation of expected and unexpected loss. Used R and the Default dataset from ISLR to study logistic and linear regression, linear discriminant analysis (LDA), classification trees and random forests."],
+    ar: ["تحليل المخاطر المالية", "Great Learning · 14 نوفمبر 2026",
+      "أتممت دورة حول محددات مخاطر الائتمان، وهي احتمالية التعثر (PD) والتعرض عند التعثر (EAD) والخسارة عند التعثر (LGD)، وحساب الخسائر المتوقعة وغير المتوقعة. استخدمت R وبيانات Default من حزمة ISLR لدراسة الانحدار اللوجستي والخطي والتحليل التمييزي الخطي (LDA) وأشجار التصنيف والغابات العشوائية."] },
   { file: "kaggle-python.png", format: "PNG",
     en: ["Python", "Kaggle Learn · 25 October 2026"],
     ar: ["Python", "Kaggle Learn · 25 أكتوبر 2026"] },
@@ -186,9 +191,10 @@ function render(language) {
     return section;
   }));
   document.querySelector("#credentials").replaceChildren(...credentials.map(credential => {
-    const [title, description] = credential[language];
+    const [title, description, summary] = credential[language];
     const card = element("article", null, "resume-item credential");
     card.append(element("h3", title), element("p", description));
+    if (summary) card.append(element("p", summary));
     if (credential.file) {
       const caption = credential.redacted ? labels.viewRedacted : labels.viewCertificate + " (" + credential.format + ")";
       const certificate = link("certificates/" + credential.file, caption);
